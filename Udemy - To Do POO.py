@@ -1,6 +1,5 @@
 from utils import formatacao, validacao, Tarefa
 
-
 formatacao.cabecalho('Udemy - To Do POO')
 
 casa = list()
@@ -18,7 +17,7 @@ while True:
   
 
   if opcao == 1:
-    tmp = Tarefa.cadastrar('Descrição: ')
+    tmp = Tarefa.cadastrar()
     casa.append(tmp) 
    
   elif opcao == 2:
@@ -28,11 +27,10 @@ while True:
     Tarefa.mostraLista(casa)
 
   elif opcao == 4:
-    validacao.sair()
+    validacao.sair('Tarefas')
     break
     
   else:
     print('\033[31mOpção Inválida\033[m')
   
   print()
-
