@@ -32,12 +32,12 @@ def concluir(lista):
 
 
 #cadastra uma nova tarefa e retorna o obj Tarefa
-def cadastrar(msg):
+def cadastrar():
 
   print('{:-^40}' .format(' Cadastrar '))
-  tmp = Tarefa(validacao.leiastr(msg))
+  tmp = Tarefa(validacao.leiaStr('Descrição '))
   print('-'*40)
-
+  
   mostraItem(tmp) 
 
   return tmp
