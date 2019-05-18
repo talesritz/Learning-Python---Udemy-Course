@@ -10,7 +10,8 @@ while True:
   [1] - Cadastrar Projeto
   [2] - Apagar Projeto
   [3] - Mostrar Projetos
-  [4] - Sair  
+  [4] - Procurar
+  [5] - Sair  
   ''', end='')
   opcao = validacao.leiaInt('Escolha uma opção: ')
   print()
@@ -30,8 +31,7 @@ while True:
   #[3] - Mostrar Projetos
   elif opcao == 3:
     if Projeto.mostrarProjetos(worksheet, ' Mostrar Projetos '):
-      
-      #Verifica se o usuário deseja manipular o projeto ou voltar ao menu principal
+
       while True:
         print('''
         [1] - Manipular Projeto
@@ -39,11 +39,9 @@ while True:
         ''')
         opcao = validacao.leiaInt('Escolha uma opção: ')
         
-        #Manipular Projeto, entra nas funções de Tarefa
         if opcao == 1:
           opproj = validacao.leiaInt('Qual Projeto: ')          
-           
-          #Executa as rotinas/funções do objeto Tarefa 
+
           while True: 
             print('\n\033[33m{:-^40}' .format(f' \033[33mProjeto {worksheet[opproj-1].nome} '))
             print('''\033[m
@@ -55,23 +53,16 @@ while True:
             opcao = validacao.leiaInt('Escolha uma opção: ')
             
 
-            #Cadastrar Tarefa
             if opcao == 1:
               tmp = Tarefa.cadastrar()
               worksheet[opproj-1].tarefas.append(tmp)
             
-
-            #Concluir Tarefa
             elif opcao == 2:
               Tarefa.concluir(worksheet[opproj-1].tarefas)
             
-
-            #Mostrar lista de Tarefas
             elif opcao == 3:
               Tarefa.mostraLista(worksheet[opproj-1].tarefas)
 
-
-            #Voltar ao menu Projetos
             elif opcao == 4:
               print('\033[31m--> Voltando a lista de Projetos <--\033[m\n')
               Projeto.mostrarProjetos(worksheet, ' Mostrar Projetos ')
@@ -80,19 +71,21 @@ while True:
             else:
               print('\033[31mOpção Inválida\033[m')
           
-
-        #Volta ao menu principal  
         elif opcao == 2:
           print('\033[31m--> Voltando ao menu Principal <--\033[m\n')
           formatacao.cabecalho('Udemy - Projetos com Tarefas')
           break
     
-     
-  #[4] - Sair
+
+  #[4]  
   elif opcao == 4:
+    Projeto.procurar(worksheet)
+
+  #[5] - Sair
+  elif opcao == 5:
     validacao.sair(' Projetos ')
     break
-          
+
           
   else:
     print('\033[31mOpção Inválida\033[m')
