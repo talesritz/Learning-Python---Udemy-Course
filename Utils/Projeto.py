@@ -25,6 +25,7 @@ def cadastrar():
 
 #Mostra apenas os nomes dos Projetos que estão cadastrados dentro da lista
 def mostrarProjetos(lista, menu = ''): 
+  
   print('{:-^40}' .format(f'{menu}'))
 
   if len(lista) == 0:
@@ -37,7 +38,7 @@ def mostrarProjetos(lista, menu = ''):
     return True
 
   
-# Print formatado do objeto Projeto
+# Print formatado do objeto Projeto, criado exclusivamente apenas para mostrar o objeto na hora que é cadastrado... uma confirmação 'visível'. 
 def mostrarItem(obj): 
   nome = obj.nome
   if obj.tarefas == []:
@@ -56,9 +57,10 @@ def mostrarItem(obj):
 
   print(f'Descrição: {nome} \nTarefas: {tarefas} \nStatus: {status} \nCriação: {criacao}\033[m')
 
+
 #Apaga objeto Projeto de dentro da lista principal utilizando a função del de list()
 def apagar(lista): 
-  mostrarProjetos(lista, 'Apagar Projeto')
+  mostrarProjetos(lista, ' Apagar Projeto ')
   opcao = validacao.leiaInt('Qual Projeto: ')
    
 
@@ -67,3 +69,26 @@ def apagar(lista):
   del lista[opcao-1]
   
   return lista
+
+
+#Procura um item baseado nos caracteres dentro da string. 
+def procurar(lista):
+  
+  print('{:-^40}' .format(' Procurar ')) #titulo
+  
+  if len(lista) == 0:
+    print('\033[33mNÃO HÁ REGISTROS\033[m')
+    return False
+  
+  else: 
+    tmp = validacao.leiaStr('Nome Projeto: ')
+    print()
+    for count in range(0, len(lista)):
+      if tmp in lista[count].nome:
+        print(f'{count+1} - {lista[count].nome}')
+    print()      
+    
+    choice = validacao.leiaStr('Escolha uma opção: ')
+
+
+    return choice-1
