@@ -3,11 +3,11 @@ from utils import validacao
 
 class Tarefa:
 
-  def __init__(self, descricao):
+  def __init__(self, descricao, vencimento=False):
     self.descricao = descricao
     self.feito = False
     self.criacao = datetime.now()
-
+    self.vencimento = vencimento 
   
   def __str__(self):
     return f'1;32mDescrição: {self.descricao} \nStatus: {self.feito} \nCriação: {self.criacao}'
